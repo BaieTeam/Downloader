@@ -19,5 +19,5 @@ ESP TNX TO:
 English: [@BaieDEV](https://telegram.me/BaieDEV)
 ----
 BY 
-[Arman](https://github.com/thisisarman ([Telegram](https://telegram.me/armanhbn))
+[Arman](https://github.com/thisisarman) ([Telegram](https://telegram.me/armanhbn))
 [Javid](https://github.com/iamjavid) ([Telegram](https://telegram.me/jwdmo))
