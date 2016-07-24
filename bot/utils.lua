@@ -1263,3 +1263,26 @@ function banall_by_reply(extra, success, result)
 		return
   end
 end
+function gethttpsize(u)
+    local r, c, h = http.request {method = "HEAD", url = u}
+    if c == 200 then
+        return tonumber(h["content-length"])
+    end
+	end
+function nicesize(b)
+    local l = "B"
+    if b > 1024 then
+        b = b / 1024
+        l = "KB"
+        if b > 1024 then
+            b = b / 1024
+            l = "MB"
+            if b > 1024 then
+                b = b / 1024
+                l = "GB" 
+            end
+        end
+    end
+    return string.format("%7.2f%2s", b, l)
+end
+--Allen
