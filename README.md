@@ -20,4 +20,4 @@ English: [@BaieDEV](https://telegram.me/BaieDEV)
 ----
 BY 
 [Arman](https://github.com/thisisarman ([Telegram](https://telegram.me/armanhbn))
-[Rondoozle](https://github.com/iamjavid) ([Telegram](https://telegram.me/jwdmo))
+[Javid](https://github.com/iamjavid) ([Telegram](https://telegram.me/jwdmo))
