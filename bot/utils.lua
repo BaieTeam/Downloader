@@ -102,7 +102,7 @@ end
 -- will get the text after the last "/" for filename
 -- and content-type for extension
 function download_to_file(url, file_name)
-  print("url to download: "..url)
+  print("New Url,Url IS: "..url)
 
   local respbody = {}
   local options = {
@@ -129,8 +129,8 @@ function download_to_file(url, file_name)
 
   file_name = file_name or get_http_file_name(url, headers)
 
-  local file_path = "data/tmp/"..file_name
-  print("Saved to: "..file_path)
+  local file_path = "downloads/"..file_name
+  print("New Task! Saved to: "..file_path)
 
   file = io.open(file_path, "w+")
   file:write(table.concat(respbody))
@@ -308,9 +308,9 @@ function send_photos_from_url_callback(cb_extra, success, result)
   local remove_path = cb_extra.remove_path
 
   -- The previously image to remove
-  if remove_path ~= nil then
+if remove_path ~= nil  and redis:get("bot:del") then
     os.remove(remove_path)
-    print("Deleted: "..remove_path)
+    print("File IS Removing: "..remove_path)
   end
 
   -- Nil or empty, exit case (no more urls)
@@ -338,10 +338,12 @@ function rmtmp_cb(cb_extra, success, result)
   local cb_function = cb_extra.cb_function or ok_cb
   local cb_extra = cb_extra.cb_extra
 
-  if file_path ~= nil then
-    os.remove(file_path)
-    print("Deleted: "..file_path)
-  end
+if redis:get("bot:del") then
+        if redis:get("bot:del") == "on" then
+          os.remove(file_path)
+    print("File IS Removing: "..file_path)
+        end
+      end
   -- Finally call the callback
   cb_function(cb_extra, success, result)
 end
@@ -419,9 +421,9 @@ function send_order_msg_callback(cb_extra, success, result)
    local destination = cb_extra.destination
    local msgs = cb_extra.msgs
    local file_path = cb_extra.file_path
-   if file_path ~= nil then
+if remove_path ~= nil  and redis:get("bot:del") then
       os.remove(file_path)
-      print("Deleted: " .. file_path)
+      print("File IS Removing: " .. file_path)
    end
    if type(msgs) == 'string' then
       send_large_msg(destination, msgs)
